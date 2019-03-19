@@ -12,7 +12,12 @@ public class CardService {
     public CardService(CardRepository repository){ this.repository = repository;};
 
     public void addOrUpdate(int id, String lastName, String firstName, String CNP, String dateOfBirth, String dateOfRegistration, int totalPoints) {
-        Card existing = repository.findById(id);
+        //CNP unique validation
+        for (Card c : repository.getAll())
+            if (c.getCNP().equals(CNP))
+                throw new RuntimeException("A client with the same CNP already exists!");
+
+       Card existing = repository.findById(id);
        if (existing != null) {
             // keep unchanged fields as they were
             if (lastName.isEmpty()) { lastName = existing.getLastName(); }
@@ -22,9 +27,11 @@ public class CardService {
             if (dateOfRegistration.isEmpty()) { dateOfRegistration = existing.getDateOfRegistration(); }
             if (totalPoints == 0) { totalPoints = existing.getTotalPoints(); }
         }
+
             Card card = new Card(id, lastName, firstName, CNP, dateOfBirth, dateOfRegistration, totalPoints);
             repository.upsert(card);
         }
+
 
     public void remove(int id) {
         repository.remove(id);

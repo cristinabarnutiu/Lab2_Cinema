@@ -47,7 +47,7 @@ public class Console {
             }
         }
     }
-//CRUD Reservation
+    //CRUD Reservation
     private void runReservationCrud() {
         while (true) {
             System.out.println("1. Add or update a reservation");
@@ -107,7 +107,7 @@ public class Console {
             System.out.println("Errors:\n" + ex.getMessage());
         }
     }
-//CRUD Card
+    //CRUD Card
     private void runCardCrud() {
         while (true) {
             System.out.println("1. Add or update a card");
@@ -173,7 +173,7 @@ public class Console {
         }
     }
 
-//CRUD Movie
+    //CRUD Movie
     private void runMovieCrud() {
         while (true) {
             System.out.println("1. Add or update a movie");

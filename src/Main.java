@@ -8,6 +8,7 @@ import Service.MovieService;
 import Service.CardService;
 import Service.ReservationService;
 import UI.Console;
+import UI.ConsoleCLN;
 public class Main {
 
     public static void main(String[] args) {
@@ -24,7 +25,7 @@ public class Main {
         CardService cardService = new CardService(cardRepository);
         ReservationService reservationService = new ReservationService(reservationRepository, movieRepository);
 
-        Console console = new Console(movieService, cardService, reservationService);
+        ConsoleCLN console = new ConsoleCLN(movieService, cardService, reservationService);
         console.run();
     }
 }
